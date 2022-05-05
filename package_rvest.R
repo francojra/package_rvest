@@ -45,3 +45,15 @@ tabela <- pagina %>%
   html_table(fill = TRUE)
 class(tabela)
 view(tabela[5])
+
+# Extraindo várias páginas de uma vez ------------------------------------------------------------------------------------------------------
+
+### Letras de músicas dos Beatles
+
+y <- "https://www.vagalume.com.br/the-beatles/"
+
+t1 <- y %>%
+  read_html() %>%
+  html_nodes(".tracks span") %>%
+  html_text()
+  
