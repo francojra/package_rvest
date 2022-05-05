@@ -23,3 +23,25 @@ texto <- pagina %>%
 
 texto
 texto[65]
+
+# Extraindo textos e links -----------------------------------------------------------------------------------------------------------------
+
+link_texto <- pagina %>%
+  html_nodes("p a") %>%
+  html_text()
+link_texto # Todos os textos dos links da página
+
+link <- pagina %>%
+  html_nodes("p a") %>%
+  html_attr("href")
+link # Todos os links
+
+simpsons_links <- data.frame("Texto" = link_texto, "Links" = link)
+view(simpsons_links)
+
+# Extraindo tabelas ------------------------------------------------------------------------------------------------------------------------
+
+tabela <- pagina %>%
+  html_table(fill = TRUE)
+class(tabela)
+view(tabela[5])
