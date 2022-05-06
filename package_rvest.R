@@ -64,3 +64,17 @@ l1 <- y %>%
 
 beatles_link <- data.frame("texto" = t1, "link" = l1)
 view(beatles_link)
+
+### Letras e títulos das músicas
+
+letra <- read_html("https://www.vagalume.com.br/the-beatles/let-it-be.html") %>%
+  html_nodes("#lyrics") %>%
+  html_text
+letra
+
+titulo <- read_html("https://www.vagalume.com.br/the-beatles/let-it-be.html") %>%
+  html_nodes("h1") %>%
+  html_text
+titulo
+
+### Função para extrair letras
