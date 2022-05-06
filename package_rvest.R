@@ -54,6 +54,13 @@ y <- "https://www.vagalume.com.br/the-beatles/"
 
 t1 <- y %>%
   read_html() %>%
-  html_nodes(".tracks span") %>%
-  html_text()
-  
+  html_nodes(".lineColLeft") %>%
+  html_text
+
+l1 <- y %>%
+  read_html() %>%
+  html_nodes(".nameMusic") %>%
+  html_attr("href")
+
+beatles_link <- data.frame("texto" = t1, "link" = l1)
+view(beatles_link)
