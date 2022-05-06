@@ -78,3 +78,16 @@ titulo <- read_html("https://www.vagalume.com.br/the-beatles/let-it-be.html") %>
 titulo
 
 ### Função para extrair letras
+
+extrair_l <- function(x) {
+  data.frame(
+    "titulo" = read_html(paste("https://www.vagalume.com.br", x, sep = "")) %>%
+      html_nodes("h1") %>% html_text,
+    "letra" = read_html(paste("https://www.vagalume.com.br", x, sep = "")) %>%
+  html_nodes("#lyrics") %>% html_text
+  )
+}
+
+beatles_letras <- map_df(beatles_link$link[1:15], extrair_l)
+view(beatles_letras)
+
